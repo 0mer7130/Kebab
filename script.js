@@ -185,6 +185,7 @@ function keeporder3() {
     else if (choice === "3") {
       console.clear();
       console.log("You died :(");
+
     }
     else {
       console.clear();
@@ -237,9 +238,7 @@ function meatorder() {
     }
     else if (choice === "6") {
       console.clear();
-      console.log("You have chosen omers meat that will be $3114.");
-      total += 3114;
-      kebab.push("omers meat");
+      console.log("You freak....");
       meatorder();
     }
     else if (choice === "7") {
