@@ -152,10 +152,10 @@ function keeporder2() {
   rl.question("1. Yes - 2. No thanks", function (choice) {
     if (choice === "1") {
       console.clear();
-      console.log("Your order is: " + kebab + "\n Your total is: $" + total);
-salads();
+total1();
     }
     else if (choice === "2") {
+      console.log("Your order is: " + kebab + "\n Your total is: $" + total);
       console.clear();
       salads();
 
@@ -167,6 +167,20 @@ salads();
     }
   })
 };
+function total1() {
+  console.log("Your order is: " + kebab + "\n Your total is: $" + total);
+rl.question("1. Okay, I want to keep ordering", function (choice) {
+  if (choice === "1") {
+    console.clear();
+   salads();
+  }
+  else {
+    console.clear();
+    console.log("Invalid selection. Please try again.");
+    total1();
+  }
+});
+}
 
 function keeporder3() {
   console.log("Here is your total " + total);
