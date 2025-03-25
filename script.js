@@ -9,7 +9,7 @@ const second = {
   3: { name: "Lamb", price: 2 },
   4: { name: "Fish", price: 3 },
   5: { name: "Vegan", price: 4 },
-  6: { name: "omers meat", price: 3114 },
+  6: { name: "omers meat", price: "3114" },
 }
 const third = {
   1: { name: "Lettuce", price: 1 },
@@ -238,7 +238,7 @@ function meatorder() {
     }
     else if (choice === "6") {
       console.clear();
-      console.log("You freak....");
+      console.log("ella you freak......");
       meatorder();
     }
     else if (choice === "7") {
