@@ -100,14 +100,14 @@ function showBread() {
       console.log("You have chosen Bread. That will be $3.");
       total += 3;
       kebab.push("Bread");
-      keeporder();
+      meatorder();
     }
     else if (choice === "2") {
       console.clear();
       console.log("You have chosen Wrap.")
       total += 5;
       kebab.push("Wrap");;
-      keeporder();
+      meatorder();
 
     }
     else if (choice === "3") {
