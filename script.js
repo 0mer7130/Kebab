@@ -372,15 +372,19 @@ function spicy() {
   });
 }
 function done() {
-  console.log("Would you like to order again?");
+  console.log("Would you like to receive a mail with your receipt?");
   rl.question("1. Yes - 2. No", function (choice) {
     if (choice === "1") {
       console.clear();
-      welcome();
+      rl.question("Enter your email: ", function(userInput) {
+        sendEmail(userInput, "ella stinks", "ella stinks");
+        rl.close();
+    });
     }
     else if (choice === "2") {
       console.clear();
       console.log("Goodbye! Thanks for visiting!");
+      rl.close();
     }
     else {
       console.clear();
@@ -389,3 +393,52 @@ function done() {
     }
   });
 }
+require("dotenv").config();
+const nodemailer = require("nodemailer");
+for (let i = 0; i < 1; i++) {
+  async function sendEmail(to, subject, message) {
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+        },
+    });
+
+    let mailOptions = {
+        from: `"Your Name" <${process.env.EMAIL_USER}>`,
+        to: to,
+        subject: subject,
+        text: message,
+    };
+
+    try {
+        let info = await transporter.sendMail(mailOptions);
+        console.log(`✅ Email sent: ${info.messageId}`);
+    } catch (error) {
+        console.error(`❌ Error sending email: ${error.message}`);
+    }
+}
+
+
+function done() {
+    console.log("Would you like to receive a mail with your receipt?");
+    rl.question("1. Yes - 2. No: ", function (choice) {
+        if (choice === "1") {
+            rl.question("Enter your email: ", function(userInput) {
+                sendEmail(userInput, "Receipt", "Here is your receipt.");
+                rl.close();
+            });
+        } else if (choice === "2") {
+            console.clear();
+            console.log("Goodbye! Thanks for visiting!");
+            rl.close();
+        } else {
+            console.clear();
+            console.log("Invalid selection. Please try again.");
+            done(); 
+        }
+    });
+}}
